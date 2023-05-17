@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+
+    <div class="container-fluid" style="margin-top: 50px;">
+        <div class="head" >
+            <div class="three">
+                <h1 style="color:#23395d">Upload File for Verifying</h1>
+            </div>
+
+            {% if messages %}
+            {% for message in messages %}
+                {% if message.tags == 'error'%}
+                    <div class="alert fails" style="background-color: #CC0B08">
+                        <span class="closebtn">&times;</span>  
+                        {{message}}
+                    </div>
+                {% else %}
+                    <div class="alert success">
+                        <span class="closebtn">&times;</span>  
+                        {{message}}
+                    </div>
+                    
+                {% endif %}
+                {% endfor %}
+            {% endif %}
+            <br>
+        
+            <form action="{% url 'uploadfile' %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div>
+                    <label><h3>Roll</h3></label>
+                    {{form.studentroll}}
+                </div>
+                <div>
+                    <label><h3>Message</h3></label>
+                    {{form.text_file}}
+                </div>
+                <div>
+                    <label><h3>Key</h3></label>
+                    {{form.public_file}}
+                </div>
+                <div>
+                    <label><h3>Signature</h3></label>
+                    {{form.signature_file}}
+                </div>
+                <br>
+                <button type="submit" class="btn">Check</button>
+            </form>
+        </div>
+    </div>
+
+
+
+    <script>
+        var close = document.getElementsByClassName("closebtn");
+        var i;
+        
+        for (i = 0; i < close.length; i++) {
+          close[i].onclick = function(){
+            var div = this.parentElement;
+            div.style.opacity = "0";
+            setTimeout(function(){ div.style.display = "none"; }, 600);
+          }
+        }
+        </script>
+
+{% endblock content %}
