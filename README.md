@@ -14,7 +14,7 @@ To run this project, ensure you have the following installed:
 1. Clone the project repository from GitHub:
 
    ```shell
-   git clone https://github.com/barath-sk17/Certificategenerator___Sign-Verify
+   git clone https://github.com/barath-sk17/Certificategenerator___Sign-Verify.git
    ```
 
 2. Install the required dependencies:
